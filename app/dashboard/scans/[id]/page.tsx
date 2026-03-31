@@ -293,7 +293,7 @@ export default async function ScanDetailPage({
                                       <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800">
                                         <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mb-1">Target Endpoint / File</p>
                                         <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded text-zinc-600 dark:text-zinc-300 break-all">
-                                          {vuln.file_path || scan.projects.target_url}
+                                          {vuln.file_path || scan.projects.[0]?.target_url}
                                         </code>
                                       </div>
                                     </div>
@@ -322,7 +322,7 @@ export default async function ScanDetailPage({
                                           {remediation.status === 'applied' ? (
                                             <div className="flex items-center gap-2 text-emerald-600 font-medium text-sm">
                                               <CheckCircle2 className="w-5 h-5" /> 
-                                              {scan.projects.source_type === 'github' ? "Pull Request Dibuat!" : "Patch Diterapkan!"}
+                                              {scan.projects.[0]?.source_type === 'github' ? "Pull Request Dibuat!" : "Patch Diterapkan!"}
                                             </div>
                                           ) : (
                                             <p className="text-xs text-zinc-500">Kirim kode perbaikan ini ke target Anda.</p>
@@ -331,7 +331,7 @@ export default async function ScanDetailPage({
                                           {remediation.status !== 'applied' && (
                                             <form action={async (formData) => {
                                               'use server'
-                                              if (scan.projects.source_type === 'github') {
+                                              if (scan.projects.[0]?.source_type === 'github') {
                                                 const { createGithubPR } = await import('../actions')
                                                 await createGithubPR(formData)
                                               } else {
@@ -341,12 +341,12 @@ export default async function ScanDetailPage({
                                             }}>
                                               <input type="hidden" name="remediationId" value={remediation.id} />
                                               <input type="hidden" name="scanId" value={scan.id} />
-                                              <input type="hidden" name="targetUrl" value={scan.projects.target_url} />
+                                              <input type="hidden" name="targetUrl" value={scan.projects.[0]?.target_url} />
                                               <input type="hidden" name="patchedCode" value={remediation.patched_code} />
                                               <input type="hidden" name="filePath" value={vuln.file_path} />
                                               
                                               <Button size="sm" type="submit" className="bg-emerald-600 hover:bg-emerald-700 w-full xl:w-auto">
-                                                {scan.projects.source_type === 'github' ? (
+                                                {scan.projects.[0]?.source_type === 'github' ? (
                                                   <><GitBranch className="w-4 h-4 mr-2" /> Auto Pull Request</>
                                                 ) : (
                                                   "Terapkan Perbaikan"
@@ -365,7 +365,7 @@ export default async function ScanDetailPage({
                                   <CopilotChat 
                                     vulnContext={{
                                       type: vuln.vulnerability_type,
-                                      file: vuln.file_path || scan.projects.target_url,
+                                      file: vuln.file_path || scan.projects.[0]?.target_url,
                                       desc: vuln.description,
                                       patch: remediation?.patched_code
                                     }} 
