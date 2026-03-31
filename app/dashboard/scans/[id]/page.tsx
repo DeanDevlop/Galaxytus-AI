@@ -322,7 +322,7 @@ export default async function ScanDetailPage({
                                           {remediation.status === 'applied' ? (
                                             <div className="flex items-center gap-2 text-emerald-600 font-medium text-sm">
                                               <CheckCircle2 className="w-5 h-5" /> 
-                                              {scan.projects?.[0]?.source_type === 'github' ? "Pull Request..."
+                                              {scan.projects?.[0]?.source_type === 'github' ? "Pull Request" : ""}
                                             </div>
                                           ) : (
                                             <p className="text-xs text-zinc-500">Kirim kode perbaikan ini ke target Anda.</p>
