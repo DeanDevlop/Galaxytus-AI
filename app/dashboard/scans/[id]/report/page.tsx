@@ -56,9 +56,9 @@ export default async function ReportPage({
       <div className="grid grid-cols-2 gap-6 mb-10">
         <div className="bg-zinc-50 p-4 rounded-lg border border-zinc-200">
           <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">Target Information</h3>
-          <p className="font-semibold text-lg">{scan.projects.name}</p>
-          <p className="text-zinc-600 font-mono text-sm break-all">{scan.projects.target_url}</p>
-          <p className="text-zinc-500 text-sm mt-2 capitalize">Type: {scan.projects.source_type.replace('_', ' ')}</p>
+          <p className="font-semibold text-lg">{scan.projects?.[0]?.name}</p>
+          <p className="text-zinc-600 font-mono text-sm break-all">{scan.projects?.[0]?.target_url}</p>
+          <p className="text-zinc-500 text-sm mt-2 capitalize">Type: {scan.projects?.[0]?.source_type.replace('_', ' ')}</p>
         </div>
         <div className="bg-zinc-50 p-4 rounded-lg border border-zinc-200 flex flex-col justify-center items-center">
           <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-1">Security Grade</h3>
