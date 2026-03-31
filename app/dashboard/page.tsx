@@ -104,7 +104,7 @@ export default function DashboardOverview() {
         const mappedScans = scans.slice(0, 5).map(s => ({
           id: s.id.split('-')[0].toUpperCase(),
           originalId: s.id,
-         project: s.projects?.[0]?.name || s.projects?.name || "Unknown Target",
+         project: s.projects?.[0]?.name || "Unknown Target",
           status: s.status,
           score: s.score_grade || "-",
           time: timeAgo(s.created_at),
