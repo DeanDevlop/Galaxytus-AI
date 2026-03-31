@@ -293,7 +293,7 @@ export default async function ScanDetailPage({
                                       <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800">
                                         <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mb-1">Target Endpoint / File</p>
                                         <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded text-zinc-600 dark:text-zinc-300 break-all">
-                                          {vuln.file_path || scan.projects.[0]?.target_url}
+                                          {vuln.file_path || scan.projects?.[0]?.target_url || "Unknown Path"}
                                         </code>
                                       </div>
                                     </div>
