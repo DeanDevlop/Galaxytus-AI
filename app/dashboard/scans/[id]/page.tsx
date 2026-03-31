@@ -235,7 +235,7 @@ export default async function ScanDetailPage({
                                   vulnContext={{
                                     vulnType: vuln.vulnerability_type,
                                     description: vuln.description,
-                                    filePath: vuln.file_path || scan.projects.target_url
+                                    filePath: vuln.file_path || scan.projects?.[0]?.target_url || "Unknown Path"
                                   }} 
                                 />
                                   {vuln.simulation && vuln.simulation.attacker_log && (
