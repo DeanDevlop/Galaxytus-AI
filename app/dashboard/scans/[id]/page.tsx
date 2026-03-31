@@ -331,7 +331,7 @@ export default async function ScanDetailPage({
                                           {remediation.status !== 'applied' && (
                                             <form action={async (formData) => {
                                               'use server'
-                                              if (scan.projects.[0]?.source_type === 'github') {
+                                              if (scan.projects?.[0]?.source_type === 'github') {
                                                 const { createGithubPR } = await import('../actions')
                                                 await createGithubPR(formData)
                                               } else {
