@@ -84,7 +84,7 @@ export default async function ScanDetailPage({
               <h1 className="text-3xl font-bold tracking-tight">Scan Details</h1>
               <Badge variant="outline" className="text-xs font-mono">{scan.id.split('-')[0].toUpperCase()}</Badge>
             </div>
-            <p className="text-zinc-500">Target: {scan.projects.target_url} ({scan.projects.name})</p>
+            <p className="text-zinc-500">Target: {scan.projects?.[0]?.target_url} ({scan.projects?.[0]?.name})</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
