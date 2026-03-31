@@ -341,12 +341,12 @@ export default async function ScanDetailPage({
                                             }}>
                                               <input type="hidden" name="remediationId" value={remediation.id} />
                                               <input type="hidden" name="scanId" value={scan.id} />
-                                              <input type="hidden" name="targetUrl" value={scan.projects.[0]?.target_url} />
+                                              <input type="hidden" name="targetUrl" value={scan.projects?.[0]?.target_url} />
                                               <input type="hidden" name="patchedCode" value={remediation.patched_code} />
                                               <input type="hidden" name="filePath" value={vuln.file_path} />
                                               
                                               <Button size="sm" type="submit" className="bg-emerald-600 hover:bg-emerald-700 w-full xl:w-auto">
-                                                {scan.projects.[0]?.source_type === 'github' ? (
+                                                {scan.projects?.[0]?.source_type === 'github' ? (
                                                   <><GitBranch className="w-4 h-4 mr-2" /> Auto Pull Request</>
                                                 ) : (
                                                   "Terapkan Perbaikan"
@@ -365,7 +365,7 @@ export default async function ScanDetailPage({
                                   <CopilotChat 
                                     vulnContext={{
                                       type: vuln.vulnerability_type,
-                                      file: vuln.file_path || scan.projects.[0]?.target_url,
+                                      file: vuln.file_path || scan.projects?.[0]?.target_url,
                                       desc: vuln.description,
                                       patch: remediation?.patched_code
                                     }} 
