@@ -84,7 +84,7 @@ export default async function ScanDetailPage({
               <h1 className="text-3xl font-bold tracking-tight">Scan Details</h1>
               <Badge variant="outline" className="text-xs font-mono">{scan.id.split('-')[0].toUpperCase()}</Badge>
             </div>
-         <div className="text-2xl font-bold capitalize">{scan.projects?.[0]?.source_type?.replace('_', ' ') || 'Unknown'}</div>
+        <p className="text-zinc-500">Target: {scan.projects?.[0]?.target_url} ({scan.projects?.[0]?.name})</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -138,7 +138,7 @@ export default async function ScanDetailPage({
             <FileCode className="h-5 w-5 text-zinc-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold capitalize">{scan.projects.source_type.replace('_', ' ')}</div>
+           <div className="text-2xl font-bold capitalize">{scan.projects?.[0]?.source_type?.replace('_', ' ') || 'Unknown'}</div>
             <p className="text-xs text-zinc-500 mt-1">Metode: Agentic AI DAST/SAST Hybrid</p>
           </CardContent>
         </Card>
