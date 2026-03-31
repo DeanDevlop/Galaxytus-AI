@@ -35,11 +35,8 @@ export async function proxy(request: NextRequest) {
     }
   )
 
-  // ===================================================================
-  // 🚨 GALAXYTUS AI WAF (AUTONOMOUS WEB APPLICATION FIREWALL) 🚨
-  // ===================================================================
-  // Ambil IP penyerang dan path yang diakses
-  const clientIp = request.headers.get('x-forwarded-for') || request.ip || 'Unknown IP';
+  
+  const clientIp = request.headers.get('x-forwarded-for') || 'Unknown IP';
   const fullUrl = request.nextUrl.pathname + request.nextUrl.search;
   const decodedUrl = decodeURIComponent(fullUrl).toLowerCase();
 
